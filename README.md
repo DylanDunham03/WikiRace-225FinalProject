@@ -30,4 +30,4 @@
 ## Team
 
 - Dylan Dunhan (`dylanad2`)
-- Rachanon Petchoo ('petchoo2')
+- Rachanon Petchoo (`petchoo2`)
