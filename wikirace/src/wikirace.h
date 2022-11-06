@@ -10,7 +10,13 @@ class Wikirace {
     public:
         Wikirace(const string& file_data, const string& file_name);
 
+        struct node{
+            int vertex_id;
+            string name;
+        };
+
     private:
-        map<int, vector<int>> adj_;
+        map<node, vector<node>> adj_;
+        
 };
 

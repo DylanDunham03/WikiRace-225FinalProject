@@ -3,6 +3,8 @@
 #include "wikirace.h"
 
 #include <fstream>
+#include <iostream>
+#include <cstring>
 
 Wikirace::Wikirace(const string& file_data, const string& file_name) {
     ifstream dataFile(file_data);
@@ -10,7 +12,14 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
     string str;
     if (dataFile.is_open()) {
         while (getline(dataFile, str)) {
-            cout << str << endl;
+            
+            unsigned idx = str.find(" ");
+            string first = str.substr(0, idx);
+            string second = str.substr(idx);
+            cout << first << " : " << second << endl;
+
+        
+
         }
     }
     cout << endl<< "--------------file_data  --> file_name-------------" << endl << endl;
