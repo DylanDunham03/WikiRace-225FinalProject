@@ -3,5 +3,6 @@ test
 *.o
 *.d
 .obj
+build/
 
 # Generated images
