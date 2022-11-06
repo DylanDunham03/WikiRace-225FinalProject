@@ -4,5 +4,6 @@ test
 *.d
 .obj
 build/
+data/
 
 # Generated images
