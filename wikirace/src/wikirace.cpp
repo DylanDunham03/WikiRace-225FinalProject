@@ -10,6 +10,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
     ifstream dataFile(file_data);
     ifstream nameFile(file_name);
     string str;
+
     if (dataFile.is_open()) {
         while (getline(dataFile, str)) {
             
@@ -23,6 +24,13 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
         }
     }
     cout << endl<< "--------------file_data  --> file_name-------------" << endl << endl;
+        if (nameFile.is_open()) {
+        while (getline(nameFile, str)) {
+            unsigned idx = str.find(" ");
+            string id = str.substr(0, idx);
+            string name = str.substr(idx);
+        }
+    }
 }
 
 
