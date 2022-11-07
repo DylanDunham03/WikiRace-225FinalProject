@@ -3,6 +3,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <iterator>
 
 using namespace std;
 
@@ -15,9 +16,11 @@ class Wikirace {
             string name;
         };
 
-    private:
         map<int, vector<int>> adj_;
         map<int, string> name_;
+
+    private:
+
         
 };
 

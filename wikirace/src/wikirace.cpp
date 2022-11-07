@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 
 Wikirace::Wikirace(const string& file_data, const string& file_name) {
     ifstream dataFile(file_data);
@@ -15,11 +16,22 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
         while (getline(dataFile, str)) {
             
             unsigned idx = str.find(" ");
-            string first = str.substr(0, idx);
-            string second = str.substr(idx);
+
+            // stoi converts str to int
+
+            int first = stoi(str.substr(0, idx));
+            int second = stoi(str.substr(idx));
             cout << first << " : " << second << endl;
 
-        
+
+            if (adj_.find(first) != adj_.end()) {
+                // key already found
+                // assumes never adding duplicates
+                adj_[first].push_back(second);
+            } else {
+                // key not found
+                adj_.insert({first , vector<int>{second}});
+            }
 
         }
     }
@@ -29,6 +41,11 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             unsigned idx = str.find(" ");
             string id = str.substr(0, idx);
             string name = str.substr(idx);
+
+
+
+            name_.insert({stoi(id), name});
+            cout << id << " : " << name << endl;
         }
     }
 }
