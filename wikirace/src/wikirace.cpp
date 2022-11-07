@@ -21,7 +21,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
 
             int first = stoi(str.substr(0, idx));
             int second = stoi(str.substr(idx));
-            cout << first << " : " << second << endl;
+            // cout << first << " : " << second << endl;
 
 
             if (adj_.find(first) != adj_.end()) {
@@ -40,12 +40,10 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
         while (getline(nameFile, str)) {
             unsigned idx = str.find(" ");
             string id = str.substr(0, idx);
-            string name = str.substr(idx);
-
-
+            string name = str.substr(idx+1);
 
             name_.insert({stoi(id), name});
-            cout << id << " : " << name << endl;
+            // cout << id << " : " << name << endl;
         }
     }
 }

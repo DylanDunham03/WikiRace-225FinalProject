@@ -3,6 +3,9 @@
 #include <iostream>
 #include <string>
 
+
+#include "../src/wikirace.h"
+
 using std::cout;
 using std::endl;
 using std::string;
@@ -16,14 +19,24 @@ TEST_CASE("PUT YOUR TESTS HERE!!!", "[weight=10][part1]") {
     REQUIRE(expected == actual);
 }
 
-TEST_CASE("constructor", "[weight=10]")
+TEST_CASE("small test constructor1", "[weight=10]")
 {
-    // PronounceDict d(pronunciations);
-    // vector< string > canon = {"scent", "cent", "sent"};
-    // auto result = cartalk_puzzle(d, "../data/cartalk_words.txt");
-    // REQUIRE(result.size() == 1);
-    // vector< string > result_vec = { get<0>(result[0]),
-    //                                 get<1>(result[0]),
-    //                                 get<2>(result[0]) };
-    // REQUIRE(is_permutation(canon.begin(), canon.end(), result_vec.begin()));
+    Wikirace wikirace("../test_data/test_data_small.txt", 
+                        "../test_data/test_name_small.txt");
+    
+
+    REQUIRE(wikirace.name_[0] == "Chiasmal syndrome");
+    REQUIRE(wikirace.name_[2] == "Pinakion");
+    REQUIRE(wikirace.name_[4] == "Zariski's main theorem");
+
+
+    /////////// test adj list ///////////////////
+    vector<int> vect1{1};
+    REQUIRE(wikirace.adj_[0] == vect1);
+
+    vector<int> vect2{2,3};
+    REQUIRE(wikirace.adj_[1] == vect2);
+
+    vector<int> vect3{4, 1};
+    REQUIRE(wikirace.adj_[2] == vect3);
 }
