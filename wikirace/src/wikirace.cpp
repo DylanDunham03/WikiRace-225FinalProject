@@ -7,6 +7,8 @@
 #include <cstring>
 #include <algorithm>
 
+using namespace std;
+
 Wikirace::Wikirace(const string& file_data, const string& file_name) {
     ifstream dataFile(file_data);
     ifstream nameFile(file_name);
@@ -27,12 +29,13 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             if (adj_.find(first) != adj_.end()) {
                 // key already found
                 // assumes never adding duplicates
-                adj_[first].push_back(second);
+
+                adj_[first].push_back(make_pair(second, adj_[first].back().second + 5));
             } else {
                 // key not found
-                adj_.insert({first , vector<int>{second}});
+                vector<std::pair<int,int>> vec {make_pair(second, 0)}; 
+                adj_.insert({first , vec});
             }
-
         }
     }
     cout << endl<< "--------------file_data  --> file_name-------------" << endl << endl;

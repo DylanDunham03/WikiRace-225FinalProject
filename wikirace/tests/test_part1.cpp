@@ -31,12 +31,14 @@ TEST_CASE("small test constructor1", "[weight=10]")
 
 
     /////////// test adj list ///////////////////
-    vector<int> vect1{1};
+    vector<pair<int,int>> vect1{std::make_pair(1,0)};
+
     REQUIRE(wikirace.adj_[0] == vect1);
 
-    vector<int> vect2{2,3};
+    vector<pair<int,int>> vect2{std::make_pair(2,0), std::make_pair(3,5)};
     REQUIRE(wikirace.adj_[1] == vect2);
 
-    vector<int> vect3{4, 1};
+    // vector<int> vect3{4, 1};
+    vector<pair<int,int>> vect3{std::make_pair(4,0), std::make_pair(1,5)};
     REQUIRE(wikirace.adj_[2] == vect3);
 }
