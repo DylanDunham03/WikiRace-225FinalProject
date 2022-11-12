@@ -13,13 +13,13 @@ class Wikirace {
     public:
         Wikirace(const string& file_data, const string& file_name);
 
-        Wikirace(map<int, vector<int>> adj);
-        void DFS(int node, map<int, vector<int>>& adj, set<int>& visited, stack<int>& s);
-        void DFS(int node, map<int, vector<int>>& adj, set<int>& visited);
-        int Components();
+        Wikirace(map<int, vector<pair<int, int>>> adj);
+        void DFS(int node, map<int, vector<pair<int, int>>>& adj, set<int>& visited, stack<int>& s);
+        void DFS(int node, map<int, vector<pair<int, int>>>& adj, set<int>& visited, set<int>& local);
+        vector<set<int>> Components();
 
     private:
-        map<int, vector<int>> adj_;
+        map<int, vector<pair<int, int>>> adj_;  // pair <nodeID, weight>
         map<int, string> name_;
         
 };

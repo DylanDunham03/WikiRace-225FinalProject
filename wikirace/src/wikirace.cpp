@@ -31,9 +31,9 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
     }
 }
 
-Wikirace::Wikirace(map<int, vector<int>> adj) : adj_(adj) { }
+Wikirace::Wikirace(map<int, vector<pair<int, int>>> adj) : adj_(adj) { }
 
-void Wikirace::DFS(int node, map<int, vector<int>>& adj, set<int>& visited, stack<int>& s) {
+void Wikirace::DFS(int node, map<int, vector<pair<int, int>>>& adj, set<int>& visited, stack<int>& s) {
     // check whether the node is already visited
     if (visited.find(node) != visited.end())
         return;
@@ -46,31 +46,32 @@ void Wikirace::DFS(int node, map<int, vector<int>>& adj, set<int>& visited, stac
     }
 
     // Do DFS if the node has neighbors
-    vector<int> adj_nodes = adj.find(node)->second;
-    for (int adj_node : adj_nodes)
-        DFS(adj_node, adj, visited, s);
+    vector<pair<int, int>> adj_nodes = adj.find(node)->second;
+    for (pair<int, int> adj_node : adj_nodes)
+        DFS(adj_node.first, adj, visited, s);
     
     // push the node to the stack
     s.push(node);
 }
 
-void Wikirace::DFS(int node, map<int, vector<int>>& adj, set<int>& visited) {
+void Wikirace::DFS(int node, map<int, vector<pair<int, int>>>& adj, set<int>& visited, set<int>& local) {
     // check whether the node is already visited
     if (visited.find(node) != visited.end())
         return;
     visited.insert(node);
+    local.insert(node);
 
     // check whether the node has neighbors
     if (adj.find(node) == adj.end())
         return;
     
     // Do DFS if the node has neighbors
-    vector<int> adj_nodes = adj.find(node)->second;
-    for (int adj_node : adj_nodes)
-        DFS(adj_node, adj, visited);
+    vector<pair<int, int>> adj_nodes = adj.find(node)->second;
+    for (pair<int, int> adj_node : adj_nodes)
+        DFS(adj_node.first, adj, visited, local);
 }
 
-int Wikirace::Components() {
+vector<set<int>> Wikirace::Components() {
     // Do DFS on G and set up the stack
     stack<int> s;
     set<int> visited;
@@ -79,24 +80,26 @@ int Wikirace::Components() {
     }
 
     // Make the tranpose of the graph G
-    map<int, vector<int>> adj_transpose;
+    map<int, vector<pair<int, int>>> adj_transpose;
     for (auto it = adj_.begin(); it != adj_.end(); it++) {
-        for (int adj_node : it->second)
-            adj_transpose[adj_node].push_back(it->first);
+        for (pair<int, int> adj_node : it->second)
+            adj_transpose[adj_node.first].push_back(make_pair(it->first, adj_node.second));
     }
 
-    // Do DFS on G transpose and get num_components
-    int num_components = 0;
+    // Do DFS on G transpose and get local set of a strongly connected component
+    vector<set<int>> to_return;
+    set<int> local;
     visited.clear();
     while (!s.empty()) {
         if (visited.find(s.top()) == visited.end()) {
-            DFS(s.top(), adj_transpose, visited);
-            num_components++;
+            DFS(s.top(), adj_transpose, visited, local);
+            to_return.push_back(local);
+            local.clear();
         }
         s.pop();
     }
 
-    return num_components;
+    return to_return;
 }
 
 
@@ -105,10 +108,19 @@ int Wikirace::Components() {
 //     s.pop();
 // }
 
+// for (auto it = adj_.begin(); it != adj_.end(); it++) {
+//     cout << "node: " << it->first << " ---> {";
+//     for (pair<int, int> adj_node : it->second)
+//         cout << "(" << adj_node.first << ", " << adj_node.second << ")" << ", ";
+//     cout << "}" << endl;
+// }
+
+// cout << endl;
+
 // for (auto it = adj_transpose.begin(); it != adj_transpose.end(); it++) {
 //     cout << "node: " << it->first << " ---> {";
-//     for (int adj_node : it->second)
-//         cout << adj_node << ", ";
+//     for (pair<int, int> adj_node : it->second)
+//         cout << "(" << adj_node.first << ", " << adj_node.second << ")" << ", ";
 //     cout << "}" << endl;
 // }
 
