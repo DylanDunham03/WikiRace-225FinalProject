@@ -2,16 +2,33 @@
 #include "wikirace.h"
 #include "heap.h"
 
+#include <cmath>
+// #include <matplot/matplot.h>
+
+#include <bits/stdc++.h>
+
 using namespace std;
 
 int main()
 {
-    // Write your own main here
+
+    time_t start, end;
+
+    time(&start); // start timer
+
     cout << "Add your own tests here! Modify main.cpp" << endl;
-    Wikirace wikirace("../test_data/test_data_small.txt", 
-                        "../test_data/test_name_small.txt");
-    // Wikirace wikirace("../data/wiki-topcats.txt", 
-    //                     "../data/wiki-topcats-page-names.txt");
+    // Wikirace wikirace("../test_data/test_data_small.txt", 
+    //                     "../test_data/test_name_small.txt");
+    Wikirace wikirace("../data/wiki-topcats.txt", 
+                        "../data/wiki-topcats-page-names.txt");
+
+
+    time(&end); // end timer
+
+    double time_taken = double(end - start);
+    cout << "Time taken by program is : " << fixed
+         << time_taken << setprecision(5);
+    cout << " sec " << endl;
 
     // print name map
     // for (auto pair : wikirace.name_) {

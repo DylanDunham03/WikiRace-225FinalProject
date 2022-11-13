@@ -1,49 +1,6 @@
-# CS225 Final Project: WikiRace
+﻿# Team Contract
 
-<p align="center">
-  <a href="#presentation-video">Presentation Video</a> •
-  <a href="#data">Data</a> •
-  <a href="#repo-structure">Code</a> •
-  <a href="#running-instructions">Running Instructions</a> •
-  <a href="#team">Team</a>
-</p>
-
-
-
-## [Team Contract](TeamContract.md)
-
-
-## [Project Proposal](ProjectProposal.md)
-
-
-## Data
-
-
-
-## Code
-
-
-### Deliverables
-
-## Running Instructions
-
-
-### Executable
-
-
-### Tests
-
-
-### Team
-
-- Dylan Dunhan (`dylanad2`)
-- Rachanon Petchoo (`petchoo2`)
-- Chris Deng (`zdeng14`)
-- Shubham More (`svmore2`)
-
-## Team Contract
-
-### Communication
+## Communication
 1. **Team Meetings** 
 
     We will meet twice a week, @Sunday 2 PM - 5 PM, @Thursday 5:30 PM - 7:30 PM. 
@@ -61,7 +18,7 @@
 
     During each meeting, members are required to speak. At the end of the meeting, all group members will need to reciprocate what their immediate tasks are for the upcoming deadlines to make sure that they participated and know what to do for the upcoming deadline.
 
-### Collaboration
+## Collaboration
 
 4. **Work Distribution** 
 
@@ -77,7 +34,7 @@
 
     When there is a disagremment, group members are expected to act respectfully and logically. If a group member does not accomplish their tasks, they are still expected to keep up to the best of their abilites. If a group member is habitually late, then after multiple warnings, we will contact course staff.
 
-### Signatures
+## Signatures
 
 Rachanon Petchoo, petchoo2
 

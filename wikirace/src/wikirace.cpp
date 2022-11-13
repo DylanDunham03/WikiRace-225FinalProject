@@ -9,6 +9,8 @@
 #include <limits>
 #include <stdexcept>
 
+using namespace std;
+
 Wikirace::Wikirace(const string& file_data, const string& file_name) {
     ifstream dataFile(file_data);
     ifstream nameFile(file_name);
@@ -29,13 +31,13 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             if (adj_.find(first) != adj_.end()) {
                 // key already found
                 // assumes never adding duplicates
+
                 adj_[first].push_back(make_pair(second, adj_[first].back().second + 5));
             } else {
                 // key not found
                 vector<std::pair<int,int>> vec {make_pair(second, 5)}; 
                 adj_.insert({first , vec});
             }
-
         }
     }
     // cout << endl<< "--------------file_data  --> file_name-------------" << endl << endl;
@@ -46,11 +48,15 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             string name = str.substr(idx+1);
 
             name_.insert({stoi(id), name});
+            name_shub_.insert({name, stoi(id)});
             if (adj_.find(stoi(id)) == adj_.end()) {
                 // nodes with no outbound edges
+
+                cout << "node with no outbound edges" << endl;
                 vector<std::pair<int,int>> vec;
                 adj_.insert({stoi(id) , vec});
             }
+
             // cout << id << " : " << name << endl;
         }
     }
@@ -80,6 +86,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
 //         }
 //     }
 // }
+
 
 vector<int> Wikirace::shortest_path(const int src, const int dest) {
     if (shortest_paths_.find(src) == shortest_paths_.end()) {
@@ -136,4 +143,39 @@ void Wikirace::dijkstra(const int src) {
     }
 
     shortest_paths_[src] = p_and_d;
+
+bool Wikirace::isAccessibleString(string startLink, string endLink) {
+    int startVertex = name_shub_[startLink];
+    int endVertex = name_shub_[endLink];
+    return isAccessible(startVertex, endVertex);
+}
+
+bool Wikirace::isAccessible(int startVertex, int endVertex) {
+
+    //all nodes visited = false
+    vector<bool> visited;                          
+    for(int i = 0; i < adj_.size(); i++) {
+        visited.push_back(false);
+    }
+    queue<int> q;
+
+    //the start node visited = true
+    visited[startVertex] = true;
+    q.push(startVertex);
+
+    while(!q.empty()) {
+        int currVertex = q.front();
+        q.pop();
+
+        for(auto& pair : adj_.at(currVertex)) {
+            if(visited[pair.first] == false) {
+                visited[pair.first] = true;
+                q.push(pair.first);
+                if(pair.first == endVertex) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 }
