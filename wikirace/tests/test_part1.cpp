@@ -93,3 +93,44 @@ TEST_CASE("test Dijkstra - medium dataset - cycles", "[weight=10]")
     vector<int> vect2{9, 10, 11, 8};
     REQUIRE(wikirace.shortest_path(9, 8) == vect2);
 }
+
+TEST_CASE("bfs small ints", "[weight=10]")
+{
+    Wikirace wikirace("../test_data/test_data_small.txt", 
+                        "../test_data/test_name_small.txt");
+    
+    REQUIRE(wikirace.isAccessible(0, 1) == true);
+    REQUIRE(wikirace.isAccessible(0, 3) == true);
+    REQUIRE(wikirace.isAccessible(0, 2) == true);
+    REQUIRE(wikirace.isAccessible(0, 4) == true);
+    REQUIRE(wikirace.isAccessible(1, 3) == true);
+    REQUIRE(wikirace.isAccessible(1, 2) == true);
+    REQUIRE(wikirace.isAccessible(1, 4) == true);
+    REQUIRE(wikirace.isAccessible(2, 1) == true);
+    REQUIRE(wikirace.isAccessible(2, 4) == true);
+    REQUIRE(wikirace.isAccessible(4, 0) == false);
+    REQUIRE(wikirace.isAccessible(2, 3) == true);
+    REQUIRE(wikirace.isAccessible(1, 0) == false);
+}
+
+// TEST_CASE("bfs small string", "[weight=10]")
+// {
+//     Wikirace wikirace("../test_data/test_data_small.txt", 
+//                         "../test_data/test_name_small.txt");
+    
+
+//     REQUIRE(wikirace.isAccessibleString("Chiasmal syndrome", "LyndonHochschildSerre spectral sequence") == true);
+//     REQUIRE(wikirace.name_[2] == "Pinakion");
+//     REQUIRE(wikirace.name_[4] == "Zariski's main theorem");
+// }
+
+// TEST_CASE("bfs medium string", "[weight=10]")
+// {
+//     Wikirace wikirace("../test_data/test_data_medium.txt", 
+//                         "../test_data/test_name_medium.txt");
+    
+
+//     REQUIRE(wikirace.name_[0] == "Chiasmal syndrome");
+//     REQUIRE(wikirace.name_[2] == "Pinakion");
+//     REQUIRE(wikirace.name_[4] == "Zariski's main theorem");
+// }

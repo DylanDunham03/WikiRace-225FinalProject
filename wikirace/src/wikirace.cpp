@@ -155,7 +155,7 @@ bool Wikirace::isAccessible(int startVertex, int endVertex) {
 
     //all nodes visited = false
     vector<bool> visited;                          
-    for(int i = 0; i < adj_.size(); i++) {
+    for(unsigned i = 0; i < adj_.size(); i++) {
         visited.push_back(false);
     }
     queue<int> q;
