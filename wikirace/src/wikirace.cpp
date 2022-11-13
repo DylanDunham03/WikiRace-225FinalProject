@@ -46,6 +46,14 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             string name = str.substr(idx+1);
 
             name_.insert({stoi(id), name});
+            if (adj_.find(stoi(id)) == adj_.end()) {
+                // nodes with no outbound edges
+
+                cout << "node with no outbound edges" << endl;
+                vector<std::pair<int,int>> vec;
+                adj_.insert({stoi(id) , vec});
+            }
+
             // cout << id << " : " << name << endl;
         }
     }
