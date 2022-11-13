@@ -1,6 +1,9 @@
 #include <iostream>
 #include "wikirace.h"
 
+#include <cmath>
+// #include <matplot/matplot.h>
+
 #include <bits/stdc++.h>
 
 using namespace std;

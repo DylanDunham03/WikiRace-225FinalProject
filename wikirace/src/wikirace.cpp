@@ -33,7 +33,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
                 adj_[first].push_back(make_pair(second, adj_[first].back().second + 5));
             } else {
                 // key not found
-                vector<std::pair<int,int>> vec {make_pair(second, 0)}; 
+                vector<std::pair<int,int>> vec {make_pair(second, 5)}; 
                 adj_.insert({first , vec});
             }
         }
