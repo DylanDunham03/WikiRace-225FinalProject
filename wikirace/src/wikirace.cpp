@@ -143,6 +143,7 @@ void Wikirace::dijkstra(const int src) {
     }
 
     shortest_paths_[src] = p_and_d;
+}
 
 bool Wikirace::isAccessibleString(string startLink, string endLink) {
     int startVertex = name_shub_[startLink];
