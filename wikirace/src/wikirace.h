@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <iterator>
+#include <queue>
 
 using namespace std;
 
@@ -15,6 +16,9 @@ class Wikirace {
         // starting vertex, outgiong vertex, weight
         map<int, string> name_;
 
+        bool isAccessible(int startVertex, int endVertex);
+        bool isAccessibleString(string startLink, string endLink);
+        
     private:
 
         

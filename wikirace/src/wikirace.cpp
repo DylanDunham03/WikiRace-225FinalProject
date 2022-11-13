@@ -75,3 +75,39 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
 //         }
 //     }
 // }
+
+bool Wikirace::isAccessibleString(string startLink, string endLink) {
+    int startVertex = name_shub_[startLink];
+    int endVertex = name_shub_[endLink];
+    return isAccessible(startVertex, endVertex);
+}
+
+bool Wikirace::isAccessible(int startVertex, int endVertex) {
+
+    //all nodes visited = false
+    vector<bool> visited;                          
+    for(int i = 0; i < adj_.size(); i++) {
+        visited.push_back(false);
+    }
+    queue<int> q;
+
+    //the start node visited = true
+    visited[startVertex] = true;
+    q.push(startVertex);
+
+    while(!q.empty()) {
+        int currVertex = q.front();
+        q.pop();
+
+        for(auto& pair : adj_.at(currVertex)) {
+            if(visited[pair.first] == false) {
+                visited[pair.first] = true;
+                q.push(pair.first);
+                if(pair.first == endVertex) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
