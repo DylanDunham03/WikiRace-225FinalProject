@@ -93,3 +93,18 @@ TEST_CASE("test Dijkstra - medium dataset - cycles", "[weight=10]")
     vector<int> vect2{9, 10, 11, 8};
     REQUIRE(wikirace.shortest_path(9, 8) == vect2);
 }
+
+TEST_CASE("test Dijkstra - using name", "[weight=10]")
+{
+    Wikirace wikirace("../test_data/test_data_small.txt", 
+                        "../test_data/test_name_small.txt");
+
+    vector<int> vect1{2, 1};
+    REQUIRE(wikirace.shortest_path("Pinakion", "Kleroterion") == vect1);
+
+    vector<int> vect2{0, 1, 2, 4};
+    REQUIRE(wikirace.shortest_path("Chiasmal syndrome", "Zariski's main theorem") == vect2);
+
+    vector<int> vect3{};
+    REQUIRE(wikirace.shortest_path("LyndonHochschildSerre spectral sequence", "Zariski's main theorem") == vect3);
+}

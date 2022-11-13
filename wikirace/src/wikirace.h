@@ -14,6 +14,8 @@ class Wikirace {
     public:
         Wikirace(const string& file_data, const string& file_name);
 
+        vector<int> shortest_path(const string src, const string dest);
+
         vector<int> shortest_path(const int src, const int dest);
 
         struct node{

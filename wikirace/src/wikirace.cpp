@@ -52,7 +52,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             if (adj_.find(stoi(id)) == adj_.end()) {
                 // nodes with no outbound edges
 
-                cout << "node with no outbound edges" << endl;
+                // cout << "node with no outbound edges" << endl;
                 vector<std::pair<int,int>> vec;
                 adj_.insert({stoi(id) , vec});
             }
@@ -87,6 +87,16 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
 //     }
 // }
 
+vector<int> Wikirace::shortest_path(const string src, const string dest) {
+    if (name_shub_.find(src) == name_shub_.end()) {
+        throw std::invalid_argument("Shortest Path: Source node does not exist");
+    }
+    if (name_shub_.find(dest) == name_shub_.end()) {
+        throw std::invalid_argument("Shortest Path: Destination node does not exist");
+    }
+
+    return shortest_path(name_shub_.at(src), name_shub_.at(dest));
+}
 
 vector<int> Wikirace::shortest_path(const int src, const int dest) {
     if (shortest_paths_.find(src) == shortest_paths_.end()) {
@@ -155,7 +165,7 @@ bool Wikirace::isAccessible(int startVertex, int endVertex) {
 
     //all nodes visited = false
     vector<bool> visited;                          
-    for(int i = 0; i < adj_.size(); i++) {
+    for(unsigned i = 0; i < adj_.size(); i++) {
         visited.push_back(false);
     }
     queue<int> q;
