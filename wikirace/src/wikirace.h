@@ -14,6 +14,7 @@ class Wikirace {
         map<int, vector<pair<int, int>>> adj_;
         // starting vertex, outgiong vertex, weight
         map<int, string> name_;
+        map<string, int> name_shub_;
 
     private:
 

@@ -46,6 +46,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             string name = str.substr(idx+1);
 
             name_.insert({stoi(id), name});
+            name_shub_.insert({name, stoi(id)});
             if (adj_.find(stoi(id)) == adj_.end()) {
                 // nodes with no outbound edges
 
