@@ -94,6 +94,23 @@ TEST_CASE("test Dijkstra - medium dataset - cycles", "[weight=10]")
     REQUIRE(wikirace.shortest_path(9, 8) == vect2);
 }
 
+TEST_CASE("test Dijkstra - full dataset", "[weight=10]")
+{
+    Wikirace wikirace("../data/wiki-topcats.txt", 
+                        "../data/wiki-topcats-page-names.txt");
+
+    vector<int> vect1{1, 2};
+    REQUIRE(wikirace.shortest_path(1, 2) == vect1);
+
+    vector<int> vect2{0, 10772};
+    REQUIRE(wikirace.shortest_path(0, 10772) == vect2);
+
+    // (732528) 732422 1791471 
+    // (732528) 732477 1791471
+    vector<int> vect3{732528, 732422, 1791471};
+    REQUIRE(wikirace.shortest_path(732528, 1791471) == vect3);
+}
+
 TEST_CASE("test Dijkstra - using name", "[weight=10]")
 {
     Wikirace wikirace("../test_data/test_data_small.txt", 

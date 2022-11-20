@@ -12,9 +12,9 @@ using namespace std;
 int main()
 {
 
-    time_t start, end;
+    time_t start_c, end_c;
 
-    time(&start); // start timer
+    time(&start_c); // start timer
 
     cout << "Add your own tests here! Modify main.cpp" << endl;
     // Wikirace wikirace("../test_data/test_data_small.txt", 
@@ -23,11 +23,11 @@ int main()
                         "../data/wiki-topcats-page-names.txt");
 
 
-    time(&end); // end timer
+    time(&end_c); // end timer
 
-    double time_taken = double(end - start);
-    cout << "Time taken by program is : " << fixed
-         << time_taken << setprecision(5);
+    double time_taken_c = double(end_c - start_c);
+    cout << "Time taken by constructor is : " << fixed
+         << time_taken_c << setprecision(5);
     cout << " sec " << endl;
 
     // print name map
@@ -37,16 +37,23 @@ int main()
 
     // cout << "main before map"<< endl;
 
-    for (auto pair : wikirace.adj_) {
-        cout << pair.first << ": "  << endl;
-        for (auto num: pair.second) {
-            cout << "ID : " << num.first << " & " << " Wieght : " << num.second << endl;
-        }
-    }
+    // for (auto pair : wikirace.adj_) {
+    //     cout << pair.first << ": "  << endl;
+    //     for (auto num: pair.second) {
+    //         cout << "ID : " << num.first << " & " << " Wieght : " << num.second << endl;
+    //     }
+    // }
 
     // print adj list
-    for (int i = 0; i <= 4; ++i) {
-        for (int j = 0; j <= 4; ++j) {
+
+    time_t start_d, end_d;
+
+    time(&start_d); // start timer
+
+    int running_nodes = 10;
+
+    for (int i = 0; i <= running_nodes; ++i) {
+        for (int j = 0; j <= running_nodes; ++j) {
             vector<int> shortest_path = wikirace.shortest_path(i, j);
             std::cout << "Path from " + std::to_string(i) + " to " + std::to_string(j) << std::endl;
             for (int id : shortest_path) {
@@ -54,6 +61,13 @@ int main()
             }
         }
     }
+
+    time(&end_d); // end timer
+
+    double time_taken_d = double(end_d - start_d);
+    cout << "Time taken by Dijkstra for " << running_nodes << " nodes is : " << fixed
+         << time_taken_d << setprecision(5);
+    cout << " sec " << endl;
 
     // int i = 0;
     // int j = 1;
