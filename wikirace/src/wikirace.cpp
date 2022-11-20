@@ -87,7 +87,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
 //     }
 // }
 
-vector<int> Wikirace::shortest_path(const string src, const string dest) {
+vector<string> Wikirace::shortest_path(const string src, const string dest) {
     if (name_shub_.find(src) == name_shub_.end()) {
         throw std::invalid_argument("Shortest Path: Source node does not exist");
     }
@@ -98,22 +98,22 @@ vector<int> Wikirace::shortest_path(const string src, const string dest) {
     return shortest_path(name_shub_.at(src), name_shub_.at(dest));
 }
 
-vector<int> Wikirace::shortest_path(const int src, const int dest) {
+vector<string> Wikirace::shortest_path(const int src, const int dest) {
     if (shortest_paths_.find(src) == shortest_paths_.end()) {
         dijkstra(src);
     }
 
     const map<int, std::pair<int, int>>& src_dijkstra = shortest_paths_.at(src);
-    vector<int> path;
+    vector<string> path;
 
     int curr = dest;
     while (curr != -1) {
-        path.insert(path.begin(), curr);
+        path.insert(path.begin(), name_.at(curr));
         curr = src_dijkstra.at(curr).first;
     }
 
-    if (path.at(0) != src) {
-        return vector<int>();
+    if (path.at(0) != name_.at(src)) {
+        return vector<string>();
     }
 
     return path;

@@ -54,10 +54,10 @@ int main()
 
     for (int i = 0; i <= running_nodes; ++i) {
         for (int j = 0; j <= running_nodes; ++j) {
-            vector<int> shortest_path = wikirace.shortest_path(i, j);
+            vector<string> shortest_path = wikirace.shortest_path(i, j);
             std::cout << "Path from " + std::to_string(i) + " to " + std::to_string(j) << std::endl;
-            for (int id : shortest_path) {
-                std::cout << id << std::endl;
+            for (string name : shortest_path) {
+                std::cout << name << std::endl;
             }
         }
     }
@@ -71,10 +71,10 @@ int main()
 
     // int i = 0;
     // int j = 1;
-    // vector<int> shortest_path = wikirace.shortest_path(i, j);
+    // vector<string> shortest_path = wikirace.shortest_path(i, j);
     // std::cout << "Path from " + std::to_string(i) + " to " + std::to_string(j) << std::endl;
-    // for (int id : shortest_path) {
-    //     std::cout << id << std::endl;
+    // for (string name : shortest_path) {
+    //     std::cout << name << std::endl;
     // }
     
     return 0;
