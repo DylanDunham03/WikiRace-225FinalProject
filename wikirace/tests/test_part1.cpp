@@ -48,13 +48,13 @@ TEST_CASE("test Dijkstra - small dataset", "[weight=10]")
                         "../test_data/test_name_small.txt");
 
     vector<string> vect1{"Pinakion", "Kleroterion"};
-    REQUIRE(wikirace.shortest_path(2, 1) == vect1);
+    REQUIRE(wikirace.shortest_path("./output.txt", 2, 1) == vect1);
 
     vector<string> vect2{"Chiasmal syndrome", "Kleroterion", "Pinakion", "Zariski's main theorem"};
-    REQUIRE(wikirace.shortest_path(0, 4) == vect2);
+    REQUIRE(wikirace.shortest_path("./output.txt", 0, 4) == vect2);
 
     vector<string> vect3{};
-    REQUIRE(wikirace.shortest_path(3, 4) == vect3);
+    REQUIRE(wikirace.shortest_path("./output.txt", 3, 4) == vect3);
 }
 
 TEST_CASE("test Dijkstra - medium dataset - simple", "[weight=10]")
@@ -63,13 +63,13 @@ TEST_CASE("test Dijkstra - medium dataset - simple", "[weight=10]")
                         "../test_data/test_name_medium.txt");
 
     vector<string> vect1{"B", "D", "A", "F"};
-    REQUIRE(wikirace.shortest_path(1, 5) == vect1);
+    REQUIRE(wikirace.shortest_path("./output.txt", 1, 5) == vect1);
 
     vector<string> vect2{"A", "F", "E"};
-    REQUIRE(wikirace.shortest_path(0, 4) == vect2);
+    REQUIRE(wikirace.shortest_path("./output.txt", 0, 4) == vect2);
 
     vector<string> vect3{"D", "A", "F", "E"};
-    REQUIRE(wikirace.shortest_path(3, 4) == vect3);
+    REQUIRE(wikirace.shortest_path("./output.txt", 3, 4) == vect3);
 }
 
 TEST_CASE("test Dijkstra - medium dataset - disconnected", "[weight=10]")
@@ -78,7 +78,7 @@ TEST_CASE("test Dijkstra - medium dataset - disconnected", "[weight=10]")
                         "../test_data/test_name_medium.txt");
 
     vector<string> vect1{};
-    REQUIRE(wikirace.shortest_path(1, 8) == vect1);
+    REQUIRE(wikirace.shortest_path("./output.txt", 1, 8) == vect1);
 }
 
 TEST_CASE("test Dijkstra - medium dataset - cycles", "[weight=10]")
@@ -88,10 +88,10 @@ TEST_CASE("test Dijkstra - medium dataset - cycles", "[weight=10]")
 
 
     vector<string> vect1{"I", "L"};
-    REQUIRE(wikirace.shortest_path(8, 11) == vect1);
+    REQUIRE(wikirace.shortest_path("./output.txt", 8, 11) == vect1);
 
     vector<string> vect2{"J", "K", "L", "I"};
-    REQUIRE(wikirace.shortest_path(9, 8) == vect2);
+    REQUIRE(wikirace.shortest_path("./output.txt", 9, 8) == vect2);
 }
 
 TEST_CASE("test Dijkstra - full dataset", "[weight=10]")
@@ -100,15 +100,15 @@ TEST_CASE("test Dijkstra - full dataset", "[weight=10]")
                         "../data/wiki-topcats-page-names.txt");
 
     vector<string> vect1{"Kleroterion", "Pinakion"};
-    REQUIRE(wikirace.shortest_path(1, 2) == vect1);
+    REQUIRE(wikirace.shortest_path("./output.txt", 1, 2) == vect1);
 
     vector<string> vect2{"Chiasmal syndrome", "Optic chiasm"};
-    REQUIRE(wikirace.shortest_path(0, 10772) == vect2);
+    REQUIRE(wikirace.shortest_path("./output.txt", 0, 10772) == vect2);
 
     // (732528) 732422 1791471 
     // (732528) 732477 1791471
     vector<string> vect3{"Professional video over IP", "Resource reservation protocol", "Next Steps in Signaling"};
-    REQUIRE(wikirace.shortest_path(732528, 1791471) == vect3);
+    REQUIRE(wikirace.shortest_path("./output.txt", 732528, 1791471) == vect3);
 }
 
 TEST_CASE("test Dijkstra - using name", "[weight=10]")
@@ -117,11 +117,11 @@ TEST_CASE("test Dijkstra - using name", "[weight=10]")
                         "../test_data/test_name_small.txt");
 
     vector<string> vect1{"Pinakion", "Kleroterion"};
-    REQUIRE(wikirace.shortest_path("Pinakion", "Kleroterion") == vect1);
+    REQUIRE(wikirace.shortest_path("./output.txt", "Pinakion", "Kleroterion") == vect1);
 
     vector<string> vect2{"Chiasmal syndrome", "Kleroterion", "Pinakion", "Zariski's main theorem"};
-    REQUIRE(wikirace.shortest_path("Chiasmal syndrome", "Zariski's main theorem") == vect2);
+    REQUIRE(wikirace.shortest_path("./output.txt", "Chiasmal syndrome", "Zariski's main theorem") == vect2);
 
     vector<string> vect3{};
-    REQUIRE(wikirace.shortest_path("LyndonHochschildSerre spectral sequence", "Zariski's main theorem") == vect3);
+    REQUIRE(wikirace.shortest_path("./output.txt", "LyndonHochschildSerre spectral sequence", "Zariski's main theorem") == vect3);
 }

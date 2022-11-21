@@ -87,7 +87,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
 //     }
 // }
 
-vector<string> Wikirace::shortest_path(const string src, const string dest) {
+vector<string> Wikirace::shortest_path(const string& file_path, const string src, const string dest) {
     if (name_shub_.find(src) == name_shub_.end()) {
         throw std::invalid_argument("Shortest Path: Source node does not exist");
     }
@@ -95,10 +95,10 @@ vector<string> Wikirace::shortest_path(const string src, const string dest) {
         throw std::invalid_argument("Shortest Path: Destination node does not exist");
     }
 
-    return shortest_path(name_shub_.at(src), name_shub_.at(dest));
+    return shortest_path(file_path, name_shub_.at(src), name_shub_.at(dest));
 }
 
-vector<string> Wikirace::shortest_path(const int src, const int dest) {
+vector<string> Wikirace::shortest_path(const string& file_path, const int src, const int dest) {
     if (shortest_paths_.find(src) == shortest_paths_.end()) {
         dijkstra(src);
     }
@@ -113,7 +113,17 @@ vector<string> Wikirace::shortest_path(const int src, const int dest) {
     }
 
     if (path.at(0) != name_.at(src)) {
-        return vector<string>();
+        path = vector<string>();
+    }
+
+    ofstream myfile(file_path);
+    if (myfile.is_open()) {
+        for (string& name : path) {
+            myfile << name << "\n";
+        }
+        myfile.close();
+    } else {
+        std::cout << "Unable to open the output destination file" << std::endl;
     }
 
     return path;
@@ -139,6 +149,9 @@ void Wikirace::dijkstra(const int src) {
     while (!pq.empty()) {
         std::pair<int, int> u_pair_distfromsrc_and_ID = pq.pop();
         int u = u_pair_distfromsrc_and_ID.second;
+        if (u_pair_distfromsrc_and_ID.first != p_and_d.at(u).second) {
+            continue;
+        }
         for (pair<int, int> v_pair_ID_and_weight : adj_.at(u)) {
 
             int v = v_pair_ID_and_weight.first;
@@ -155,13 +168,13 @@ void Wikirace::dijkstra(const int src) {
     shortest_paths_[src] = p_and_d;
 }
 
-bool Wikirace::isAccessibleString(string startLink, string endLink) {
+bool Wikirace::isAccessibleString(const string& file_path, string startLink, string endLink) {
     int startVertex = name_shub_[startLink];
     int endVertex = name_shub_[endLink];
-    return isAccessible(startVertex, endVertex);
+    return isAccessible(file_path, startVertex, endVertex);
 }
 
-bool Wikirace::isAccessible(int startVertex, int endVertex) {
+bool Wikirace::isAccessible(const string& file_path, int startVertex, int endVertex) {
 
     //all nodes visited = false
     vector<bool> visited;                          
@@ -183,10 +196,25 @@ bool Wikirace::isAccessible(int startVertex, int endVertex) {
                 visited[pair.first] = true;
                 q.push(pair.first);
                 if(pair.first == endVertex) {
+                    ofstream myfile(file_path);
+                    if (myfile.is_open()) {
+                        myfile << "true" << "\n";
+                        myfile.close();
+                    } else {
+                        std::cout << "Unable to open the output destination file" << std::endl;
+                    }
+
                     return true;
                 }
             }
         }
+    }
+    ofstream myfile(file_path);
+    if (myfile.is_open()) {
+        myfile << "false" << "\n";
+        myfile.close();
+    } else {
+        std::cout << "Unable to open the output destination file" << std::endl;
     }
     return false;
 }
