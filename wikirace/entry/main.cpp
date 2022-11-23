@@ -23,22 +23,27 @@ void adj_example1(map<int, vector<pair<int, int>>>& adj) {
 
 int main()
 {
-    // Write your own main here
-    cout << "Add your own tests here! Modify main.cpp" << endl;
-    // Wikirace wikirace("../test_data/test_data_small.txt", 
-    //                     "../test_data/test_name_small.txt");
-
     map<int, vector<pair<int, int>>> adj;
     adj_example1(adj);
     Wikirace wikirace(adj);
 
-    vector<set<int>> components = wikirace.Components();
+    vector<set<int>> components = wikirace.Components("./output.txt");
     for (size_t i = 0; i < components.size(); i++) {
         cout << "Set" << i << ": " << endl;
         for (auto it = components[i].begin(); it != components[i].end(); it++)
             cout << *it << ", ";
         cout << endl;
     }
+
+    // Wikirace wikirace("../data/wiki-topcats.txt", 
+    //                     "../data/wiki-topcats-page-names.txt");
+    // vector<set<int>> components = wikirace.Components();
+    // for (size_t i = 0; i < components.size(); i++) {
+    //     cout << "Set" << i << ": " << endl;
+    //     for (auto it = components[i].begin(); it != components[i].end(); it++)
+    //         cout << *it << ", ";
+    //     cout << endl;
+    // }
 
     return 0;
 }
