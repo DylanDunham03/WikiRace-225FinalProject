@@ -109,6 +109,10 @@ TEST_CASE("test Dijkstra - full dataset", "[weight=10]")
     // (732528) 732477 1791471
     vector<string> vect3{"Professional video over IP", "Resource reservation protocol", "Next Steps in Signaling"};
     REQUIRE(wikirace.shortest_path("./output.txt", 732528, 1791471) == vect3);
+
+    vector<string> vect4{"Spermatophore", "Portable Document Format", "Universal 3D", "ArchiCAD", "Cinema 4D"};
+    REQUIRE(wikirace.shortest_path("./output.txt", "Spermatophore", "Cinema 4D") == vect4);
+    
 }
 
 TEST_CASE("test Dijkstra - using name", "[weight=10]")
