@@ -14,23 +14,21 @@ TEST_CASE("small test constructor1", "[weight=10]")
 {
     Wikirace wikirace("../test_data/test_data_small.txt", 
                         "../test_data/test_name_small.txt");
-    
 
-    REQUIRE(wikirace.name_[0] == "Chiasmal syndrome");
-    REQUIRE(wikirace.name_[2] == "Pinakion");
-    REQUIRE(wikirace.name_[4] == "Zariski's main theorem");
+    REQUIRE(wikirace.get_name_map().at(0) == "Chiasmal syndrome");
 
+    REQUIRE(wikirace.get_name_map().at(2) == "Pinakion");
 
-    /////////// test adj list ///////////////////
+    REQUIRE(wikirace.get_name_map().at(4) == "Zariski's main theorem");
+
     vector<pair<int,int>> vect1{std::make_pair(1,5)};
-    REQUIRE(wikirace.adj_[0] == vect1);
+    REQUIRE(wikirace.get_graph().at(0) == vect1);
 
     vector<pair<int,int>> vect2{std::make_pair(2,5), std::make_pair(3,10)};
-    REQUIRE(wikirace.adj_[1] == vect2);
+    REQUIRE(wikirace.get_graph().at(1) == vect2);
 
-    // vector<int> vect3{4, 1};
-     vector<pair<int,int>> vect3{std::make_pair(4,5), std::make_pair(1,10)};
-    REQUIRE(wikirace.adj_[2] == vect3);
+    vector<pair<int,int>> vect3{std::make_pair(4,5), std::make_pair(1,10)};
+    REQUIRE(wikirace.get_graph().at(2) == vect3);
 }
 
 TEST_CASE("test Dijkstra - small dataset", "[weight=10]")
@@ -121,13 +119,11 @@ TEST_CASE("test Dijkstra - using name", "[weight=10]")
     REQUIRE(wikirace.shortest_path("./output.txt", "LyndonHochschildSerre spectral sequence", "Zariski's main theorem") == vect3);
 }
 
-///////////////////////////////////////////////////////// BFS FUNCTIONS IsAccessible & IsAccessibleString TEST CASES ///////////////////////////////////
-
 TEST_CASE("test BFS IsAccessible - small dataset - simple", "[weight=10]")
 {
     Wikirace wikirace("../test_data/test_data_small.txt", "../test_data/test_name_small.txt");
     
-    //startVertex & endVertex are just one node apart or the same node
+    // startVertex & endVertex are just one node apart or the same node
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 0) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 1) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 3) == true);
@@ -143,7 +139,7 @@ TEST_CASE("test BFS IsAccessible - small dataset - simple", "[weight=10]")
     REQUIRE(wikirace.isAccessible("./output.txt", 1, 0) == false);
     REQUIRE(wikirace.isAccessible("./output.txt", 4, 0) == false);
 
-    //startVertex & endVertex are multiple nodes apart
+    // startVertex & endVertex are multiple nodes apart
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 4) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 2, 3) == true);
 }
@@ -152,7 +148,7 @@ TEST_CASE("test IsAccessibleString - small dataset - simple", "[weight=10]")
 {
     Wikirace wikirace("../test_data/test_data_small.txt", "../test_data/test_name_small.txt");
 
-    //startVertex & endVertex are just one node apart or the same node
+    // startVertex & endVertex are just one node apart or the same node
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Chiasmal syndrome", "Kleroterion") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Kleroterion", "Pinakion") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Kleroterion", "LyndonHochschildSerre spectral sequence") == true);
@@ -160,7 +156,7 @@ TEST_CASE("test IsAccessibleString - small dataset - simple", "[weight=10]")
 
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Zariski's main theorem", "Chiasmal syndrome") == false);
 
-    //startVertex & endVertex are multiple nodes apart
+    // startVertex & endVertex are multiple nodes apart
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Chiasmal syndrome", "LyndonHochschildSerre spectral sequence") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Kleroterion", "Zariski's main theorem") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Pinakion", "LyndonHochschildSerre spectral sequence") == true);
@@ -173,7 +169,7 @@ TEST_CASE("test BFS IsAccessible - medium dataset - simple", "[weight=10]")
 {
     Wikirace wikirace("../test_data/test_data_medium.txt", "../test_data/test_name_medium.txt");
 
-    //startVertex & endVertex are just one node apart or the same node
+    // startVertex & endVertex are just one node apart or the same node
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 0) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 1) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 5) == true);
@@ -198,7 +194,7 @@ TEST_CASE("test BFS IsAccessible - medium dataset - simple", "[weight=10]")
 
     REQUIRE(wikirace.isAccessible("./output.txt", 5, 0) == false);
 
-    //startVertex & endVertex are multiple nodes apart
+    // startVertex & endVertex are multiple nodes apart
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 3) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 1, 6) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 5, 7) == true);
@@ -220,7 +216,7 @@ TEST_CASE("test IsAccessibleString - medium dataset - simple", "[weight=10]")
 {
     Wikirace wikirace("../test_data/test_data_medium.txt", "../test_data/test_name_medium.txt");
 
-    //startLink & endLink are just one node apart
+    // startLink & endLink are just one node apart
     REQUIRE(wikirace.isAccessibleString("./output.txt", "A", "B") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "C", "H") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "F", "E") == true);
@@ -228,7 +224,7 @@ TEST_CASE("test IsAccessibleString - medium dataset - simple", "[weight=10]")
     REQUIRE(wikirace.isAccessibleString("./output.txt", "E", "A") == false);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "E", "F") == false);
 
-    //startLink & endLink are multiple nodes apart
+    // startLink & endLink are multiple nodes apart
     REQUIRE(wikirace.isAccessibleString("./output.txt", "A", "D") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "B", "G") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "G", "C") == true);
@@ -280,7 +276,7 @@ TEST_CASE("test BFS IsAccessible - wiki-topcats full dataset", "[weight=10]")
 {
     Wikirace wikirace("../data/wiki-topcats.txt", "../data/wiki-topcats.txt");
 
-    //startVertex & endVertex are just one node apart or the same node
+    // startVertex & endVertex are just one node apart or the same node
     REQUIRE(wikirace.isAccessible("./output.txt", 0, 10772) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 1, 170193) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 3, 1101724) == true);
@@ -292,7 +288,7 @@ TEST_CASE("test BFS IsAccessible - wiki-topcats full dataset", "[weight=10]")
     REQUIRE(wikirace.isAccessible("./output.txt", 161, 788483) == true);
 
 
-    //startVertex & endVertex are multiple nodes apart
+    // startVertex & endVertex are multiple nodes apart
     REQUIRE(wikirace.isAccessible("./output.txt", 161, 1101062) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 166935, 1702611) == true);
     REQUIRE(wikirace.isAccessible("./output.txt", 1756954, 28509) == true);
@@ -302,13 +298,13 @@ TEST_CASE("test IsAccessibleString - wiki-topcats full dataset", "[weight=10]")
 {
     Wikirace wikirace("../data/wiki-topcats.txt", "../data/wiki-topcats.txt");
 
-    //startLink & endLink are just one node apart
+    // startLink & endLink are just one node apart
     REQUIRE(wikirace.isAccessibleString("./output.txt", "LyndonHochschildSerre spectral sequence", "Homological algebra") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Zariski's main theorem", "Finite morphism") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "St Paul of the Cross Cathedral", "Pipe organ") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Philip Grosser", "Alexander Berkman") == true);
 
-    //startLink & endLink are multiple nodes apart
+    // startLink & endLink are multiple nodes apart
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Quasiperiodicity", "PlanetMath") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Hendrik van Riessen", "Terminism") == true);
     REQUIRE(wikirace.isAccessibleString("./output.txt", "Hossein Koushki", "Wind turbine") == true);
@@ -385,7 +381,7 @@ TEST_CASE("test Components - small dataset", "[weight=10]")
 }
 
 
-TEST_CASE("test Compoents - medium dataset", "[weight=10]")
+TEST_CASE("test Components - medium dataset", "[weight=10]")
 {
     // Include Cycle, Isolated Components, and Connected but not Strongly Connected Component
     Wikirace wikirace("../test_data/test_data_medium.txt", 
