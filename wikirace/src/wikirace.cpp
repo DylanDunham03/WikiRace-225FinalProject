@@ -52,7 +52,7 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
             if (adj_.find(stoi(id)) == adj_.end()) {
                 // nodes with no outbound edges
 
-                cout << "node with no outbound edges" << endl;
+                // cout << "node with no outbound edges" << endl;
                 vector<std::pair<int,int>> vec;
                 adj_.insert({stoi(id) , vec});
             }
@@ -87,23 +87,43 @@ Wikirace::Wikirace(const string& file_data, const string& file_name) {
 //     }
 // }
 
+vector<string> Wikirace::shortest_path(const string& file_path, const string src, const string dest) {
+    if (name_shub_.find(src) == name_shub_.end()) {
+        throw std::invalid_argument("Shortest Path: Source node does not exist");
+    }
+    if (name_shub_.find(dest) == name_shub_.end()) {
+        throw std::invalid_argument("Shortest Path: Destination node does not exist");
+    }
 
-vector<int> Wikirace::shortest_path(const int src, const int dest) {
+    return shortest_path(file_path, name_shub_.at(src), name_shub_.at(dest));
+}
+
+vector<string> Wikirace::shortest_path(const string& file_path, const int src, const int dest) {
     if (shortest_paths_.find(src) == shortest_paths_.end()) {
         dijkstra(src);
     }
 
     const map<int, std::pair<int, int>>& src_dijkstra = shortest_paths_.at(src);
-    vector<int> path;
+    vector<string> path;
 
     int curr = dest;
     while (curr != -1) {
-        path.insert(path.begin(), curr);
+        path.insert(path.begin(), name_.at(curr));
         curr = src_dijkstra.at(curr).first;
     }
 
-    if (path.at(0) != src) {
-        return vector<int>();
+    if (path.at(0) != name_.at(src)) {
+        path = vector<string>();
+    }
+
+    ofstream myfile(file_path);
+    if (myfile.is_open()) {
+        for (string& name : path) {
+            myfile << name << "\n";
+        }
+        myfile.close();
+    } else {
+        std::cout << "Unable to open the output destination file" << std::endl;
     }
 
     return path;
@@ -129,6 +149,9 @@ void Wikirace::dijkstra(const int src) {
     while (!pq.empty()) {
         std::pair<int, int> u_pair_distfromsrc_and_ID = pq.pop();
         int u = u_pair_distfromsrc_and_ID.second;
+        if (u_pair_distfromsrc_and_ID.first != p_and_d.at(u).second) {
+            continue;
+        }
         for (pair<int, int> v_pair_ID_and_weight : adj_.at(u)) {
 
             int v = v_pair_ID_and_weight.first;
@@ -146,20 +169,31 @@ void Wikirace::dijkstra(const int src) {
 }
 
 
-
 ////////////////////////////////////////////////////// BREADTH FIRST SEARCH(BFS) ALGORITHM BELOW //////////////////////////////
 
 /**
- * The IsAccessible function deals with checking whether a path exists from
- * integer nodes in "wiki-topcats.txt" file.
- *
+ * The IsAccessibleString function converts the integer nodes from the IsAccessible function
+ * to strings from the adjacency list(number_) those strings are mapped to specific values in the
+ * "wiki-topcats-page-names.txt" in the data folder. Checks whether there is a path from one link to
+ * another link.
+ * 
  * @param file_path     ..............................idk what to put here
- * @param startVertex   starting node of the BFS.
- * @param endVertex     ending node of the BFS   
- * @return              a boolean value of true or false if a path is found from one node to the other.
+ * @param startLink     starting link to begin BFS.
+ * @param endVertex     ending link to end BFS.   
+ * @return              a boolean value of true or false if a path is found from startLink to endLink.
  */
+ 
+bool Wikirace::isAccessibleString(const string& file_path, string startLink, string endLink) {
+    //name_shub_ is a map<string, int> created from the data in "wiki-topcats-page-names.txt"
+    //convert startLink and endLink into their respective integer nodes
+    int startVertex = name_shub_[startLink];
+    int endVertex = name_shub_[endLink];
+    
+    //Run the BFS algorithm isAccessible
+    return isAccessible(file_path, startVertex, endVertex);
+}
 
-bool Wikirace::isAccessible(int startVertex, int endVertex) {
+bool Wikirace::isAccessible(const string& file_path, int startVertex, int endVertex) {
 
     // Base case that checks if the user is going from the same node back to itself, the path must exist.
     if(startVertex == endVertex) {
@@ -191,33 +225,26 @@ bool Wikirace::isAccessible(int startVertex, int endVertex) {
                 visited[pair.first] = true;
                 q.push(pair.first);
                 if(pair.first == endVertex) {
+                    ofstream myfile(file_path);
+                    if (myfile.is_open()) {
+                        myfile << "true" << "\n";
+                        myfile.close();
+                    } else {
+                        std::cout << "Unable to open the output destination file" << std::endl;
+                    }
+
                     return true;
                 }
             }
         }
     }
+    ofstream myfile(file_path);
+    if (myfile.is_open()) {
+        myfile << "false" << "\n";
+        myfile.close();
+    } else {
+        std::cout << "Unable to open the output destination file" << std::endl;
+    }
     return false;
 }
 
-/**
- * The IsAccessibleString function converts the integer nodes from the IsAccessible function
- * to strings from the adjacency list(number_) those strings are mapped to specific values in the
- * "wiki-topcats-page-names.txt" in the data folder. Checks whether there is a path from one link to
- * another link.
- * 
- * @param file_path     ..............................idk what to put here
- * @param startLink     starting link to begin BFS.
- * @param endVertex     ending link to end BFS.   
- * @return              a boolean value of true or false if a path is found from startLink to endLink.
- */
-
-bool Wikirace::isAccessibleString(string startLink, string endLink) {
-    
-    //name_shub_ is a map<string, int> created from the data in "wiki-topcats-page-names.txt"
-    //convert startLink and endLink into their respective integer nodes
-    int startVertex = name_shub_[startLink];
-    int endVertex = name_shub_[endLink];
-
-    //Run the BFS algorithm isAccessible
-    return isAccessible(startVertex, endVertex);
-}
