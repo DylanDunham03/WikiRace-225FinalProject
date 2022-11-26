@@ -400,41 +400,41 @@ TEST_CASE("test Components - medium dataset", "[weight=10]")
         REQUIRE(solution.find(set) != solution.end());
 }
 
-// TEST_CASE("test Components - full dataset", "[weight=10]")
-// {
+TEST_CASE("test Components - full dataset", "[weight=10]")
+{
 
-//     splitData("../data/wiki-topcats.txt", "../data/wiki-topcats-page-names.txt", 
-//                 "../data/wiki-topcats-cutted.txt", "../data/wiki-topcats-page-names-cutted.txt", 800000);
+    splitData("../data/wiki-topcats.txt", "../data/wiki-topcats-page-names.txt", 
+                "../data/wiki-topcats-cutted.txt", "../data/wiki-topcats-page-names-cutted.txt", 800000);
 
-//     sortBothConnectedNodes("../data/wiki-topcats-cutted.txt", 
-//                             "../data/wiki-topcats-cutted-interconnected-nodes.txt");
+    sortBothConnectedNodes("../data/wiki-topcats-cutted.txt", 
+                            "../data/wiki-topcats-cutted-interconnected-nodes.txt");
 
-//     Wikirace wikirace("../data/wiki-topcats-cutted.txt", 
-//                         "../data/wiki-topcats-page-names-cutted.txt");
+    Wikirace wikirace("../data/wiki-topcats-cutted.txt", 
+                        "../data/wiki-topcats-page-names-cutted.txt");
 
-//     vector<set<int>> components = wikirace.Components("./output.txt");
+    vector<set<int>> components = wikirace.Components("./output.txt");
 
-//     string file_data = "../data/wiki-topcats-cutted-interconnected-nodes.txt";
-//     ifstream dataFile(file_data);
-//     string str;
+    string file_data = "../data/wiki-topcats-cutted-interconnected-nodes.txt";
+    ifstream dataFile(file_data);
+    string str;
 
-//     int num = 100;
-//     int count = 0;
-//     if(dataFile.is_open()) {
-//         while (count < num) {
-//             count++;
-//             getline(dataFile, str);
-//             unsigned idx = str.find(" ");
-//             int first = stoi(str.substr(0, idx));
-//             int second = stoi(str.substr(idx));
+    int num = 100;
+    int count = 0;
+    if(dataFile.is_open()) {
+        while (count < num) {
+            count++;
+            getline(dataFile, str);
+            unsigned idx = str.find(" ");
+            int first = stoi(str.substr(0, idx));
+            int second = stoi(str.substr(idx));
 
-//             // if the component contains one of the two nods, it has to contain the other as well
-//             for (auto component : components) {
-//                 if (component.find(first) != component.end())
-//                     REQUIRE(component.find(second) != component.end());
-//                 else
-//                     REQUIRE(component.find(second) == component.end());
-//             }
-//         }
-//     }
-// }
+            // if the component contains one of the two nods, it has to contain the other as well
+            for (auto component : components) {
+                if (component.find(first) != component.end())
+                    REQUIRE(component.find(second) != component.end());
+                else
+                    REQUIRE(component.find(second) == component.end());
+            }
+        }
+    }
+}
