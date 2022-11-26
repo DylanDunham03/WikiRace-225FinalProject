@@ -168,29 +168,58 @@ void Wikirace::dijkstra(const int src) {
     shortest_paths_[src] = p_and_d;
 }
 
+
+////////////////////////////////////////////////////// BREADTH FIRST SEARCH(BFS) ALGORITHM BELOW //////////////////////////////
+
+/**
+ * The IsAccessibleString function converts the integer nodes from the IsAccessible function
+ * to strings from the adjacency list(number_) those strings are mapped to specific values in the
+ * "wiki-topcats-page-names.txt" in the data folder. Checks whether there is a path from one link to
+ * another link.
+ * 
+ * @param file_path     ..............................idk what to put here
+ * @param startLink     starting link to begin BFS.
+ * @param endVertex     ending link to end BFS.   
+ * @return              a boolean value of true or false if a path is found from startLink to endLink.
+ */
+ 
 bool Wikirace::isAccessibleString(const string& file_path, string startLink, string endLink) {
+    //name_shub_ is a map<string, int> created from the data in "wiki-topcats-page-names.txt"
+    //convert startLink and endLink into their respective integer nodes
     int startVertex = name_shub_[startLink];
     int endVertex = name_shub_[endLink];
+    
+    //Run the BFS algorithm isAccessible
     return isAccessible(file_path, startVertex, endVertex);
 }
 
 bool Wikirace::isAccessible(const string& file_path, int startVertex, int endVertex) {
 
-    //all nodes visited = false
+    // Base case that checks if the user is going from the same node back to itself, the path must exist.
+    if(startVertex == endVertex) {
+        return true;
+    }
+    
+    // Create a vector<bool> of the size of the adjacency list and set all nodes to be visited = false.
     vector<bool> visited;                          
     for(unsigned i = 0; i < adj_.size(); i++) {
         visited.push_back(false);
     }
-    queue<int> q;
 
-    //the start node visited = true
+    /*
+        Steps
+            1) Create an empty queue, set the startVertex visited as true, push startVertex to queue
+            2) Run BFS algorithm that searches through the nodes in the adjacency list pair, if it is 
+            a new node not visisted yet set it to visited and push it to the queue
+            3) Check if the queue is not empty, if it is return false, else check the latest node at the front and pop it
+            and repeat the entire process again until the queue is empty or until the node we reach is the endNode
+    */
+    queue<int> q;
     visited[startVertex] = true;
     q.push(startVertex);
-
     while(!q.empty()) {
         int currVertex = q.front();
         q.pop();
-
         for(auto& pair : adj_.at(currVertex)) {
             if(visited[pair.first] == false) {
                 visited[pair.first] = true;
@@ -218,3 +247,4 @@ bool Wikirace::isAccessible(const string& file_path, int startVertex, int endVer
     }
     return false;
 }
+
