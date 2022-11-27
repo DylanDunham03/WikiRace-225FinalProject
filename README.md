@@ -50,39 +50,19 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 1. From the build directory, run `make main`
 2. Run `./main (path to data labelling connections between pages) (path to data containing ID and name) (path to output file)`
     - For example, `./main ../test_data/test_data_medium.txt ../test_data/test_name_medium.txt ./output.txt`
-3. Answer the sequence of questions prompted on the terminal (an example is shown below):	
-
-<p align="left">
-  <img src="./Documents/Images/first.png" width="400"/>
-</p>
-
-<p align="left">
-  <img src="./Documents/Images/second.png" width="400"/>
-</p>
-
-<p align="left">
-  <img src="./Documents/Images/third.png" width="400"/>
-</p>
-
-<p align="left">
-  <img src="./Documents/Images/fourth.png" width="400"/>
-</p>
-
-
+3. Answer the sequence of questions prompted on the terminal
 5. Upon successful run, you’ll see the following message:
-
-<p align="left">
-  <img src="./Documents/Images/fifth.png" width="400"/>
-</p>
+      <p align="center">
+        <img src="./Documents/Images/fifth.png" width="560"/>
+      </p>
 
 ### Tests
 1. From the build directory, run `make test`
 2. Run `./test` to run all test cases, or run each individual test by running `./test (test_case_name)`
 3. Upon successful run, you’ll see the following message (it might take a while):
-
-<p align="left">
-  <img src="./Documents/Images/sixth.png" width="400"/>
-</p>
+      <p align="center">
+        <img src="./Documents/Images/sixth.png" width="560"/>
+      </p>
 
 We constructed the small and medium sized datasets in the [`/test_data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data) directory, which is used to evaluate our algorithms' correctness. We made the datasets that include both the cycles and disconnected components, so that we can test our algorithms on those edge cases as well. Our tests cover the constructor, BFS algorithm, Dijkstra's algorithm, and also Kosaraju's algorithm.
 
