@@ -10,10 +10,10 @@
 
 
 
-## [Team Contract](TeamContract.md)
+## [Team Contract](https://github.com/DylanDunham03/WikiRace-225FinalProject/blob/main/Documents/TeamContract.md)
 
 
-## [Project Proposal](ProjectProposal.md)
+## [Project Proposal](https://github.com/DylanDunham03/WikiRace-225FinalProject/blob/main/Documents/ProjectProposal.md)
 
 
 ## Data
@@ -59,7 +59,6 @@ https://drive.google.com/drive/folders/1n6MIdoUR8Jymwy0taQ4BBBIdNCVNGVSm?usp=sha
 
 ### Team
 
-[Team Contract](https://github.com/DylanDunham03/WikiRace-225FinalProject/blob/main/Documents/TeamContract.md)
 
 - Dylan Dunhan (`dylanad2`)
 - Rachanon Petchoo (`petchoo2`)
