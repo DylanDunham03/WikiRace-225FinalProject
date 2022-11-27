@@ -18,10 +18,10 @@
 
 ## Data
 
+We are using the [Wikipedia network of top categories](https://snap.stanford.edu/data/wiki-topcats.html) data and focusing on the following two files:
 
-
-## Code
-
+- [Hyperlink network of Wikipedia](https://snap.stanford.edu/data/wiki-topcats.txt.gz)
+- [Names of the articles](https://snap.stanford.edu/data/wiki-topcats-page-names.txt.gz)
 
 
 ## Repo Structure
