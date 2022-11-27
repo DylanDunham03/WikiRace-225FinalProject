@@ -80,6 +80,10 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 2. Run `./test` to run all test cases, or run each individual test by running `./test (test_case_name)`
 3. Upon successful run, you’ll see the following message (it might take a while):
 
+<p align="left">
+  <img src="./Documents/Images/sixth.png" width="400"/>
+</p>
+
 We constructed the small and medium sized datasets in the [`/test_data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data) directory, which is used to evaluate our algorithms' correctness. We made the datasets that include both the cycles and disconnected components, so that we can test our algorithms on those edge cases as well. Our tests cover the constructor, BFS algorithm, Dijkstra's algorithm, and also Kosaraju's algorithm.
 
 ## Team
