@@ -28,14 +28,14 @@ int main(int argc,char* argv[])
         std::cin >> choice;
 
         if (choice == "1") {
-            std::cout << "\n Select your input type: \n [1] Node's ID (int) \n [2] Node's name (string)" << std::endl;
+            std::cout << "\n Select your input type: \n [1] Node's ID (int) \n [2] Node's name (string) \n Please type '1' or '2' :" << std::endl;
             string type;
             std::cin >> type;
             if (type == "1") {
-                std::cout << "\n Input your source node's ID" << std::endl;
+                std::cout << "\n Input your source node's ID :" << std::endl;
                 int src_id;
                 std::cin >> src_id;
-                std::cout << "\n Input your destination node's ID" << std::endl;
+                std::cout << "\n Input your destination node's ID :" << std::endl;
                 int dest_id;
                 std::cin >> dest_id;
 
@@ -43,10 +43,10 @@ int main(int argc,char* argv[])
                 wikirace.isAccessible(argv[3], src_id, dest_id);
                 std::cout << "\n Successfully write the result to the output file" << std::endl;
             } else if (type == "2") {
-                std::cout << "\n Input your source node's name" << std::endl;
+                std::cout << "\n Input your source node's name :" << std::endl;
                 string src_name;
                 std::cin >> src_name;
-                std::cout << "\n Input your destination node's name" << std::endl;
+                std::cout << "\n Input your destination node's name :" << std::endl;
                 string dest_name;
                 std::cin >> dest_name;
 
@@ -56,14 +56,14 @@ int main(int argc,char* argv[])
             }
 
         } else if (choice == "2") {
-            std::cout << "\n Select your input type: \n [1] Node's ID (int) \n [2] Node's name (string)" << std::endl;
+            std::cout << "\n Select your input type: \n [1] Node's ID (int) \n [2] Node's name (string) \n Please type '1' or '2' :" << std::endl;
             string type;
             std::cin >> type;
             if (type == "1") {
-                std::cout << "\n Input your source node's ID" << std::endl;
+                std::cout << "\n Input your source node's ID :" << std::endl;
                 int src_id;
                 std::cin >> src_id;
-                std::cout << "\n Input your destination node's ID" << std::endl;
+                std::cout << "\n Input your destination node's ID :" << std::endl;
                 int dest_id;
                 std::cin >> dest_id;
 
@@ -71,10 +71,10 @@ int main(int argc,char* argv[])
                 wikirace.shortest_path(argv[3], src_id, dest_id);
                 std::cout << "\n Successfully write the result to the output file" << std::endl;
             } else if (type == "2") {
-                std::cout << "\n Input your source node's name" << std::endl;
+                std::cout << "\n Input your source node's name :" << std::endl;
                 string src_name;
                 std::cin >> src_name;
-                std::cout << "\n Input your destination node's name" << std::endl;
+                std::cout << "\n Input your destination node's name :" << std::endl;
                 string dest_name;
                 std::cin >> dest_name;
 
