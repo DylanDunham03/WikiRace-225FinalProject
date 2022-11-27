@@ -21,7 +21,7 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 ### Deliverables
 
 - All major files that contain our functions and classes are in the [`/src`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/src). The structure of how those files/classes interact with our project is outlined in the [Project Structure](#project-structure) below.
-- The “wiki-topcat” dataset pulled from Stanford SNAP is stored in [`/data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace)  once you make the folder and import the .txt files as in the running instructions, and the “small” and “medium” datasets are stored in [`.test-data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data). All data is stored in .txt files
+- The “wiki-topcat” dataset pulled from Stanford SNAP is stored in [`/data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace)  once you make the folder and import the .txt files as in the [Running Instructions](#running-instructions). The “small” and “medium” datasets used in testing are stored in [`.test-data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data). All data is stored in .txt files
 - Testcases are in the [`/tests`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/tests)
 - The written project report, development log, contract, and project proposal are in the [`/Documents`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/Documents)
 
