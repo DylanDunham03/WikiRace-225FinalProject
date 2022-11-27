@@ -66,6 +66,8 @@ class Wikirace {
         /**
         * Perform Kosaraju's Algorithm, and return a vector of set of integers.
         * Each set indicate a strongly connected component.
+        * NOTE: The algorithm has limit approxmiately 65000 nodes or approximately around 800000 edges
+        * However, variation depends on the density of the graph
         * 
         * @param file_path     A path that indicate where the output will be written
         * @return              A vector of sets, each of which is a strongly connected component
