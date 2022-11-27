@@ -27,6 +27,16 @@
 
 ## Running Instructions
 
+To get started, clone the repository locally, and open it with your favorite IDE, while you are connected to CS225 docker container.
+
+Next, add the following two data files in wikirace/data
+
+You can download them here:
+
+https://drive.google.com/drive/folders/1n6MIdoUR8Jymwy0taQ4BBBIdNCVNGVSm?usp=share_link
+
+--- ADD INSTRUCTIOSN HERE ---
+
 
 ### Executable
 
