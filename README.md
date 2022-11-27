@@ -8,14 +8,6 @@
   <a href="#team">Team</a>
 </p>
 
-
-
-## [Team Contract](https://github.com/DylanDunham03/WikiRace-225FinalProject/blob/main/Documents/TeamContract.md)
-
-
-## [Project Proposal](https://github.com/DylanDunham03/WikiRace-225FinalProject/blob/main/Documents/ProjectProposal.md)
-
-
 ## Data
 
 We are using the [Wikipedia network of top categories](https://snap.stanford.edu/data/wiki-topcats.html) data and focusing on the following two files:
