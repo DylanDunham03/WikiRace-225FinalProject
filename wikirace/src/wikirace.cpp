@@ -291,3 +291,56 @@ vector<set<int>> Wikirace::Components(const string& file_path) {
 
     return to_return;
 }
+
+
+void splitData(const string& input_file_data, const string& input_file_name, 
+                const string& output_file_data, const string& output_file_name, int num) {
+    ifstream inDataFile(input_file_data);
+    ofstream outDataFile(output_file_data);
+    ifstream inNameFile(input_file_name);
+    ofstream outNameFile(output_file_name);
+
+    int count = 0;
+    if (inDataFile.is_open()) {
+        while (count < num){
+            count++;
+            string str;
+            getline(inDataFile, str);
+            outDataFile << str << endl;
+        }
+    }
+
+    count = 0;
+    if (inNameFile.is_open()) {
+        while (count < num){
+            count++;
+            string str;
+            getline(inNameFile, str);
+            outNameFile << str << endl;
+        }
+    }
+}
+
+void sortBothConnectedNodes(const string& input_file_data, const string& output_file_data) {
+    ifstream inDataFile(input_file_data);
+    ofstream outDataFile(output_file_data);
+    map<int, set<int>> map;
+    string str;
+
+    if (inDataFile.is_open()) {
+        while (getline(inDataFile, str)) {
+            unsigned idx = str.find(" ");
+            int first = stoi(str.substr(0, idx));
+            int second = stoi(str.substr(idx));
+            if (map.find(first) == map.end())
+                map[first] = {second};
+            else
+                map[first].insert(second);
+            
+            if (map.find(second) == map.end())
+                continue;
+            if(map[second].find(first) != map[second].end())
+                outDataFile << first << " " << second << endl;
+        }
+    }
+}
