@@ -21,7 +21,7 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 ### Deliverables
 
 - All major files that contain our functions and classes are in the [`/src`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/src). The structure of how those files/classes interact with our project is outlined in the [Project Structure](#project-structure) below.
-- The “wiki-topcat” dataset pulled from Stanford SNAP is stored in [`/data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace)  once you make the folder and import the .txt files as in the [Running Instructions](#running-instructions). The “small” and “medium” datasets used in testing are stored in [`.test-data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data). All data is stored in .txt files
+- The “wiki-topcat” dataset pulled from Stanford SNAP is stored in [`/data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace)  once you make the folder and import the .txt files as in the [Running Instructions](#running-instructions). The “small” and “medium” datasets used in testing are stored in [`/test_data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data). All data is stored in .txt files
 - Testcases are in the [`/tests`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/tests)
 - The written project report, development log, contract, and project proposal are in the [`/Documents`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/Documents)
 
@@ -57,6 +57,8 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 1. From the build directory, run `make test`
 2. Run `./test` to run all test cases, or run each individual test by running `./test (test_case_name)`
 3. Upon successful run, you’ll see the following message (it might take a while):
+
+We constructed the small and medium sized datasets in the [`/test_data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data) directory, which is used to evaluate our algorithms' correctness. We made the datasets that include both the cycles and disconnected components, so that we can test our algorithms on those edge cases as well. Our tests cover the constructor, BFS algorithm, Dijkstra's algorithm, and also Kosaraju's algorithm.
 
 ## Team
 
