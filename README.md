@@ -51,7 +51,29 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 2. Run `./main (path to data labelling connections between pages) (path to data containing ID and name) (path to output file)`
     - For example, `./main ../test_data/test_data_medium.txt ../test_data/test_name_medium.txt ./output.txt`
 3. Answer the sequence of questions prompted on the terminal (an example is shown below):	
-4. Upon successful run, you’ll see the following message:
+
+<p align="left">
+  <img src="./Documents/Images/first.png" width="400"/>
+</p>
+
+<p align="left">
+  <img src="./Documents/Images/second.png" width="400"/>
+</p>
+
+<p align="left">
+  <img src="./Documents/Images/third.png" width="400"/>
+</p>
+
+<p align="left">
+  <img src="./Documents/Images/fourth.png" width="400"/>
+</p>
+
+
+5. Upon successful run, you’ll see the following message:
+
+<p align="left">
+  <img src="./Documents/Images/fifth.png" width="400"/>
+</p>
 
 ### Tests
 1. From the build directory, run `make test`
