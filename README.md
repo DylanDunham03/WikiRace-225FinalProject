@@ -25,6 +25,13 @@
 
 ### Deliverables
 
+## Repo Structure
+
+### Project Structure
+<p align="center">
+  <img src="./Documents/ProjectStructure.png" width="560"/>
+</p>
+
 ## Running Instructions
 
 To get started, clone the repository locally, and open it with your favorite IDE, while you are connected to CS225 docker container.
