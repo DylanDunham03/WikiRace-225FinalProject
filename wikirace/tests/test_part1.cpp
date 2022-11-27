@@ -31,6 +31,49 @@ TEST_CASE("small test constructor1", "[weight=10]")
     REQUIRE(wikirace.get_graph().at(2) == vect3);
 }
 
+TEST_CASE("medium test constructor1", "[weight=10]")
+{
+    Wikirace wikirace("../test_data/test_data_medium.txt", 
+                        "../test_data/test_name_medium.txt");
+
+    REQUIRE(wikirace.get_name_map().at(0) == "A");
+
+    REQUIRE(wikirace.get_name_map().at(2) == "C");
+
+    REQUIRE(wikirace.get_name_map().at(9) == "J");
+
+    vector<pair<int,int>> vect1{std::make_pair(1,5), std::make_pair(5,10)};
+    REQUIRE(wikirace.get_graph().at(0) == vect1);
+
+    vector<pair<int,int>> vect2{std::make_pair(0,5)};
+    REQUIRE(wikirace.get_graph().at(3) == vect2);
+
+    vector<pair<int,int>> vect3{std::make_pair(11,5)};
+    REQUIRE(wikirace.get_graph().at(10) == vect3);
+}
+
+
+TEST_CASE("full-data test constructor1", "[weight=10]")
+{
+    Wikirace wikirace("../data/wiki-topcats.txt", 
+                        "../data/wiki-topcats-page-names.txt");
+
+    REQUIRE(wikirace.get_name_map().at(3) == "LyndonHochschildSerre spectral sequence");
+
+    REQUIRE(wikirace.get_name_map().at(374) == "Araucariana");
+
+    REQUIRE(wikirace.get_name_map().at(1050349) == "Glenn Holtzman");
+
+    vector<pair<int,int>> vect1{std::make_pair(82313,5), std::make_pair(82636,10),  std::make_pair(1457593,15),  std::make_pair(1458832,20),  std::make_pair(1458840,25),  std::make_pair(1458844,30),  std::make_pair(1459102,35)};
+    REQUIRE(wikirace.get_graph().at(1460174) == vect1);
+
+    vector<pair<int,int>> vect2{std::make_pair(10,5) , std::make_pair(1101496,10) ,  std::make_pair(1102709,15)};
+    REQUIRE(wikirace.get_graph().at(9) == vect2);
+
+    vector<pair<int,int>> vect3{std::make_pair(10772,5)};
+    REQUIRE(wikirace.get_graph().at(0) == vect3);
+}
+
 TEST_CASE("test Dijkstra - small dataset", "[weight=10]")
 {
     Wikirace wikirace("../test_data/test_data_small.txt", 
@@ -60,6 +103,8 @@ TEST_CASE("test Dijkstra - medium dataset - simple", "[weight=10]")
     vector<string> vect3{"D", "A", "F", "E"};
     REQUIRE(wikirace.shortest_path("./output.txt", 3, 4) == vect3);
 }
+
+
 
 TEST_CASE("test Dijkstra - medium dataset - disconnected", "[weight=10]")
 {
