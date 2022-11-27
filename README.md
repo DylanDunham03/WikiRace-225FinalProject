@@ -32,24 +32,33 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 
 ## Running Instructions
 
-To get started, clone the repository locally, and open it with your favorite IDE, while you are connected to CS225 docker container.
-
-Next, add the following two data files in wikirace/data
-
-You can download them here:
-
-https://drive.google.com/drive/folders/1n6MIdoUR8Jymwy0taQ4BBBIdNCVNGVSm?usp=share_link
-
---- ADD INSTRUCTIOSN HERE ---
-
+### Setting up 
+1. Open up your Terminal
+2. `cd` into the folder containing cs225 Dockerfile
+3. `git clone https://github.com/DylanDunham03/WikiRace-225FinalProject.git`
+4. `cd WikiRace-225FinalProject/wikirace`
+5. `mkdir data`
+6. Download the two .txt files [here](https://drive.google.com/drive/folders/1n6MIdoUR8Jymwy0taQ4BBBIdNCVNGVSm?usp=share_link) to use our data set
+7. Drag them into the `data` folder you just created in step 5
+    - If you want to use other data sets, move it into this `data` folder as well
+8. `mkdir build`
+9. `cd build`
+10. `cmake ..`
+11. If you want to run the algorithms, skip to the [Executable](#executable) part. If you want to run the test suites, skip to the [Tests](#tests) part.
 
 ### Executable
-
+1. From the build directory, run `make main`
+2. Run `./main (path to data labelling connections between pages) (path to data containing ID and name) (path to output file)`
+    - For example, `./main ../test_data/test_data_medium.txt ../test_data/test_name_medium.txt ./output.txt`
+3. Answer the sequence of questions prompted on the terminal (an example is shown below):	
+4. Upon successful run, you’ll see the following message:
 
 ### Tests
+1. From the build directory, run `make test`
+2. Run `./test` to run all test cases, or run each individual test by running `./test (test_case_name)`
+3. Upon successful run, you’ll see the following message (it might take a while):
 
-
-### Team
+## Team
 
 
 - Dylan Dunhan (`dylanad2`)
