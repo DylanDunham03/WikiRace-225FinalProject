@@ -4,8 +4,9 @@ test
 *.d
 .obj
 build/
-# data/
-data/wiki-topcats-page-names.txt
-data/wiki-topcats.txt
+data/
+
+# data/wiki-topcats-page-names.txt
+# data/wiki-topcats.txt
 
 # Generated images
