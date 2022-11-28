@@ -56,7 +56,7 @@ It would use the basic breadth first search(BFS) on link_1, and check whether li
 
 - int ShortestPath(string link_1, string link_2):
 Inputs are two wikipedia links, and the output is the shortest path between link_1 and link_2. If the link_2 is not accessible from link_1, it would return -1.
-It would pick link_1 as the starting node, run Dijkstra’s Algorithm. If link_2 at the end is still infinity, then it indicates that link_2 is inaccessible, or it would return the shortest distance from link_2 and link_1. This would take O(E+VlogV) time complexity and O(V) space complexity.
+It would pick link_1 as the starting node, run Dijkstra’s Algorithm. If link_2 at the end is still infinity, then it indicates that link_2 is inaccessible, or it would return the shortest distance from link_2 and link_1. This would take O(V+ElogV) time complexity and O(V) space complexity.
 
 - int Components():
 There would be no input parameter, and the function would return the strongly connected components in the graph. It would implement by Kosaraju’s Algorithm (DFS → G^T → DFS(G^T)). Totally it would take O(V+E) time complexity and O(V+E) space complexity.
