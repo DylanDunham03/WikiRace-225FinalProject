@@ -126,6 +126,9 @@ TEST_CASE("test Dijkstra - medium dataset - cycles", "[weight=10]")
     
     vector<string> vect2{"J", "K", "L", "I"};
     REQUIRE(wikirace.shortest_path("./output.txt", 9, 8) == vect2);
+
+    vector<string> vect3{"D", "A", "F", "G"};
+    REQUIRE(wikirace.shortest_path("./output.txt", 3, 6) == vect3);
 }
 
 TEST_CASE("test Dijkstra - full dataset", "[weight=10]")
