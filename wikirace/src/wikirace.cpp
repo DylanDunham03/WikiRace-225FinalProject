@@ -90,8 +90,12 @@ vector<string> Wikirace::shortest_path(const string& file_path, const int src, c
     // Write the result to output file
     ofstream myfile(file_path);
     if (myfile.is_open()) {
-        for (string& name : path) {
-            myfile << name << "\n";
+        if (path.size() != 0) {
+            for (string& name : path) {
+                myfile << name << "\n";
+            }
+        } else {
+            myfile << "Impossible to traverse to the destination node." << "\n";
         }
         myfile.close();
     } else {
