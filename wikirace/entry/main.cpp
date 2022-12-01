@@ -45,10 +45,11 @@ int main(int argc,char* argv[])
             } else if (type == "2") {
                 std::cout << "\n Input your source node's name :" << std::endl;
                 string src_name;
-                std::cin >> src_name;
+                std::cin.ignore();
+                std::getline(std::cin, src_name);
                 std::cout << "\n Input your destination node's name :" << std::endl;
                 string dest_name;
-                std::cin >> dest_name;
+                std::getline(std::cin, dest_name);
 
                 correct_input = true;
                 wikirace.isAccessibleString(argv[3], src_name, dest_name);
@@ -73,10 +74,11 @@ int main(int argc,char* argv[])
             } else if (type == "2") {
                 std::cout << "\n Input your source node's name :" << std::endl;
                 string src_name;
-                std::cin >> src_name;
+                std::cin.ignore();
+                std::getline(std::cin, src_name);
                 std::cout << "\n Input your destination node's name :" << std::endl;
                 string dest_name;
-                std::cin >> dest_name;
+                std::getline(std::cin, dest_name);
 
                 correct_input = true;
                 wikirace.shortest_path(argv[3], src_name, dest_name);
