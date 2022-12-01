@@ -64,7 +64,9 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
         <img src="./Documents/Images/sixth.png" width="560"/>
       </p>
 
-We constructed the small and medium sized datasets in the [`/test_data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data) directory, which is used to evaluate our algorithms' correctness. We made the datasets that include both the cycles and disconnected components, so that we can test our algorithms on those edge cases as well. Our tests cover running the constructor, BFS algorithm, Dijkstra's algorithm, and Kosaraju's algorithm on our small dataset, medium dataset, and the whole dataset. One exception is that, for the Kosaraju's algorithm, we tested it only on cutted dataset which contains 800,000 edges (due to the limitations of stack overflow from recursive calls), yet, it still shows that our algorithm works.
+We constructed the small and medium sized datasets in the [`/test_data`](https://github.com/DylanDunham03/WikiRace-225FinalProject/tree/main/wikirace/test_data) directory, which is used to evaluate our algorithms' correctness. We made those datasets include both the cycles and disconnected components, so that we can test our algorithms on these edge cases as well. 
+
+Our tests cover running the constructor, BFS algorithm, Dijkstra's algorithm, and Kosaraju's algorithm on our small dataset, medium dataset, and the whole dataset. One exception is that, for the Kosaraju's algorithm running on the whole dataset, we tested it only on cutted dataset which contains 800,000 edges (due to the limitations of stack overflow from recursive calls), yet, it still shows that our algorithm works for general datasets with smaller sizes.
 
 ## Team
 
