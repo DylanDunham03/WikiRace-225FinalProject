@@ -1,4 +1,4 @@
-## Breadth First Search(BFS)
+## Breadth First Search (BFS)
 The main idea of the BFS algorithm is that if a traversal is possible between a starting node and an ending node we output “true” in the output file otherwise we return “false” in the output file.
 
 There are two functions that implement the BFS algorithm, the first being IsAccessible and the second being IsAccessibleString. Both functions take an output file, a starting node, and a destination node. The IsAccessible function just checks if it is possible to travel from a starting node to an ending node where the nodes are ints. Then in the IsAccessibleString function, we convert the integer nodes into corresponding string hyperlinks and then run IsAccessible to check if it is possible to go from a starting string node to an ending string node.
