@@ -78,6 +78,7 @@ For this week, the main goal of our team is to complete all of the Final Deliver
 6. Presentation: all members responsible for their parts
 7. Presentation Video Recording: all members, with Dylan looking over the logistics
 8. Demo Video Recording: Andrew
+
 Goals for the week were met.
 
 ### Problems Encountered 
