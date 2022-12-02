@@ -71,7 +71,7 @@ For this week, the main goal of our team is to complete all of the Final Deliver
 
 ### Specific Tasks Completed (and by who)
 1. Code for Interactive Questions when the user run the program: Andrew
-2, Running Instructions: Andrew (write) and Chris (double-checked by starting from cloning the project again)
+2. Running Instructions: Andrew (write) and Chris (double-checked by starting from cloning the project again)
 3. GitHub organization: Shubham and Dylan
 4. Report: Dylan (main), and each member also write about their own algorithms
 5. Leading Question: Shubham 
