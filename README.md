@@ -8,6 +8,9 @@
   <a href="#team">Team</a>
 </p>
 
+## Presentation Video
+- Watch our presentation video [here](https://youtu.be/gAhk8CbH3Oo)
+
 ## Data
 
 We are using the [Wikipedia network of top categories](https://snap.stanford.edu/data/wiki-topcats.html) data and focusing on the following two files:
@@ -45,6 +48,7 @@ We are using the [Wikipedia network of top categories](https://snap.stanford.edu
 9. `cd build`
 10. `cmake ..`
 11. If you want to run the algorithms, skip to the [Executable](#executable) part. If you want to run the test suites, skip to the [Tests](#tests) part.
+    - Feel free to watch our [Demo video](https://youtu.be/Bxm03RmKXgg) on how to run the Executable and Test suites
 
 ### Executable
 1. From the build directory, run `make main`
